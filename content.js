@@ -1,3 +1,5 @@
+const videoPlayerOverlay = document.getElementsByClassName("video-player__overlay")[0];
+
 let muteButtonClicked = false;  // Track if the mute button was clicked initially
 let adElementFound = false;     // Track if the Ad element was found
 
@@ -45,7 +47,7 @@ const observer = new MutationObserver((mutationsList) => {
 });
 
 // Start observing the document's body for changes in the child elements
-observer.observe(document.body, {
+observer.observe(videoPlayerOverlay, {
     childList: true,  // Watch for child node changes
     subtree: true     // Monitor the entire subtree
 });
