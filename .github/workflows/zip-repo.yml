@@ -1,0 +1,27 @@
+---
+name: Zip repository
+
+on:
+    workflow_call:
+        inputs:
+            name:
+                description: "Release name"
+                required: true
+                default: "latest"
+
+jobs:
+    pack:
+        name: Zip repository
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Create zip file
+              run: zip -r {{ inputs.name }}.zip {{ github.workspace}} .
+
+            - name: Upload zip file
+              uses: actions/upload-artifact@v2
+              with:
+                  name: ${{ inputs.name }}.zip
