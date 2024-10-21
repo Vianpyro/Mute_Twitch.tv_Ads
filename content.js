@@ -1,11 +1,11 @@
-const videoPlayerOverlay = document.getElementsByClassName("video-player__overlay")[0];
+const videoPlayerOverlay = videoPlayerOverlay.getElementsByClassName("video-player__overlay")[0];
 
 let muteButtonClicked = false;  // Track if the mute button was clicked initially
 let adElementFound = false;     // Track if the Ad element was found
 
 // Function to click the Mute button if it's available
 function clickMuteButton() {
-    const muteButton = document.querySelector('[aria-label="Mute (m)"]');
+    const muteButton = videoPlayerOverlay.querySelector('[aria-label="Mute (m)"]');
 
     if (muteButton && !muteButtonClicked) {
         console.log('Mute button clicked for the first time.');
@@ -16,7 +16,7 @@ function clickMuteButton() {
 
 // Function to check if the Ad element appears
 function checkForAdElement() {
-    const adElement = document.querySelector('[aria-label="Ad"]');
+    const adElement = videoPlayerOverlay.querySelector('[aria-label="Ad"]');
 
     if (adElement && !adElementFound) {
         console.log('Ad element detected.');
@@ -27,7 +27,7 @@ function checkForAdElement() {
         adElementFound = false;  // Reset the Ad element detection
         if (muteButtonClicked) {
             // If the mute button was clicked, click it again when Ad disappears
-            const muteButton = document.querySelector('[aria-label="Unmute (m)"]');
+            const muteButton = videoPlayerOverlay.querySelector('[aria-label="Unmute (m)"]');
             if (muteButton) {
                 console.log('Mute button clicked again after Ad disappeared.');
                 muteButton.click();
@@ -46,7 +46,7 @@ const observer = new MutationObserver((mutationsList) => {
     }
 });
 
-// Start observing the document's body for changes in the child elements
+// Start observing the videoPlayerOverlay's body for changes in the child elements
 observer.observe(videoPlayerOverlay, {
     childList: true,  // Watch for child node changes
     subtree: true     // Monitor the entire subtree

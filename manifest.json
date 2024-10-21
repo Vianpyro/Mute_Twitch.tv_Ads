@@ -1,15 +1,12 @@
 {
     "manifest_version": 3,
     "name": "Twitch Ad Detector",
-    "version": "1.0",
+    "version": "1.0.2",
     "description": "Detects when an Ad appears and mutes the stream.",
     "permissions": [
         "activeTab",
         "scripting"
     ],
-    "background": {
-        "service_worker": "content.js"
-    },
     "content_scripts": [
         {
             "matches": [
@@ -19,5 +16,9 @@
                 "content.js"
             ]
         }
-    ]
+    ],
+    "developer": {
+        "name": "Vianney Veremme",
+        "url": "https://github.com/Vianpyro/Mute_Twitch.tv_Ads"
+    }
 }
